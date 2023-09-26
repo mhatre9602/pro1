@@ -33,6 +33,7 @@
           <li class="list-group-item">Item 2</li>
           <li class="list-group-item">Item 3</li>
           <li class="list-group-item">Item 4</li>
+          <li class="list-1">Item5</li>
         </ul>
       </div>
     </div>
@@ -52,7 +53,12 @@
       const lists5 = (document.getElementsByClassName(
         "list-group-item"
       )[3].style.fontWeight = "bold");
-      const list5 = document.getElementsByClassName("list-group-item");
+      const list5 = (document.getElementsByTagName(
+        "li"
+      )[4].style.backgroundColor = "blue");
+      // const list6 = (document.getElementsByClassName(
+      //   "list-1"
+      // )[0].style.backgroundColor = "blue");
       console.log(list5);
     </script>
   </body>
