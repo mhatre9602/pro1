@@ -1,41 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 2px;
+      }
+      body {
+        background-image: url(images/black.jpg);
+      }
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
   </head>
-  <style>
-    .center {
-      margin: auto;
-      width: 30%;
-      border: 3px solid black;
-      padding: 10px;
-      text-align: left;
-    }
-  </style>
   <body>
-    <div class="center">
-      <form>
-        <h1>Add Items</h1>
-        <input type="text" id="data" />
-        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-        <h1>Items</h1>
-        <hr />
-        <h4>Item1</h4>
-        <hr />
-        <h4>Item2</h4>
-        <hr />
-        <h4>Item3</h4>
-        <hr />
-        <h4>Item4</h4>
+    <section class="container my-2 bg-dark w-50 text-light">
+      <form class="row g-3">
+        <div class="col-12">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" />
+        </div>
+
+        <div class="col-12">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" />
+        </div>
+        <div class="col-12">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="text" class="form-control" id="phone" />
+        </div>
+        <!-- <div class="col-sm-4">
+          <div class="input-group date" id="datepicker">
+            <input type="text" class="form-control" />
+            <span class="input-group-append">
+              <span class="input-group-text bg-white">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+              </span>
+            </span>
+          </div>
+        </div> -->
+
+        <input type="datetime-local" id="datetime" />
+        <div class="col-12">
+          <button class="btn btn-primary" onclick="local()">Submit</button>
+        </div>
       </form>
-    </div>
+    </section>
+    <script>
+      // function print() {
+      //   let data = document.getElementById("name");
+      //   console.log(data.value);
+      //   let data1 = document.getElementById("email");
+      //   console.log(data1.value);
+      //   let data2 = document.getElementById("phone");
+      //   console.log(data2.value);
+      // }
+      function local() {
+        let info = document.getElementById("name").value;
+        // console.log(info);
+        let info1 = document.getElementById("email").value;
+        // // console.log(data1.value);
+        let info2 = document.getElementById("phone").value;
+        // console.log(data2.value);
+        localStorage.setItem("myName", info);
+        localStorage.setItem("email", info1);
+        localStorage.setItem("phone", info2);
+        console.log();
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
