@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 2px;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <section class="container my-2 bg-dark w-50 text-light">
+      <form class="row g-3">
+        <div class="col-12">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" />
+        </div>
+
+        <div class="col-12">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" />
+        </div>
+        <div class="col-12">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="text" class="form-control" id="phone" />
+        </div>
+
+        <!-- <input type="datetime-local" id="datetime" /> -->
+        <div class="col-12" id="btnid">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            id="but"
+            onclick="return local();"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </section>
+    <script>
+      function local() {
+        let parentElement = document.getElementById("btnid");
+        let info = document.getElementById("name").value;
+        let info1 = document.getElementById("email").value;
+        let info2 = document.getElementById("phone").value;
+
+        let obj = { info, info1, info2 };
+        localStorage.setItem(obj.email, JSON.stringify(obj));
+
+        let childElement = document.createElement("p");
+        childElement.textContent = info + " " + info1 + " " + info2;
+
+        let deleteBtn = document.createElement("input");
+        deleteBtn.type = "button";
+        deleteBtn.value = "delete";
+
+        deleteBtn.onclick = () => {
+          localStorage.removeItem(obj.email);
+          parentElement.removeChild(childElement);
+        };
+
+        childElement.appendChild(deleteBtn);
+        parentElement.appendChild(childElement);
+        return false;
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
