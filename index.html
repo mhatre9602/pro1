@@ -70,7 +70,20 @@
           parentElement.removeChild(childElement);
         };
 
+        let editBtn = document.createElement("input");
+        editBtn.type = "button";
+        editBtn.value = "edit";
+
+        editBtn.onclick = () => {
+          document.getElementById("name").value = obj.info;
+          document.getElementById("email").value = obj.info1;
+          document.getElementById("phone").value = obj.info2;
+          localStorage.removeItem(obj.email);
+          parentElement.removeChild(childElement);
+        };
+
         childElement.appendChild(deleteBtn);
+        childElement.appendChild(editBtn);
         parentElement.appendChild(childElement);
         return false;
       }
