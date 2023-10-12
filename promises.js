@@ -150,14 +150,17 @@ function createPost() {
     currentdate.getMinutes() +
     ":" +
     currentdate.getSeconds();
-  console.log(
-    "Before creating post" + ++postNo + " : USER active time - ",
-    datetime
-  );
+
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      posts.push({ title: "POST" + postNo });
-      resolve();
+      posts.push({ title: "POST" + ++postNo });
+      let message =
+        "Before creating POST " +
+        postNo +
+        " activity time of USER :" +
+        datetime +
+        "\n";
+      resolve(message);
       updateLastUserActivityTime();
     }, 1000);
   });
@@ -181,7 +184,8 @@ function updateLastUserActivityTime() {
         ":" +
         currentdate.getMinutes() +
         ":" +
-        currentdate.getSeconds();
+        currentdate.getSeconds() +
+        "\n";
       resolve(datetime);
     }, 1000);
   });
@@ -205,12 +209,20 @@ function printPost() {
   console.log(posts);
   //   });
 }
+function userFunction() {
+  Promise.all([createPost(), updateLastUserActivityTime()]).then(
+    ([resolve1, resolve2]) => {
+      console.log(resolve1 + " " + resolve2);
+    }
+  );
+}
 
-createPost();
+// updateLastUserActivityTime().then((time) => {
+//   console.log(time);
+// });
+userFunction();
+userFunction();
+userFunction();
 
-updateLastUserActivityTime().then((time) => {
-  console.log(time);
-});
-createPost();
-createPost();
+// createPost();
 deletePost().then(printPost);
